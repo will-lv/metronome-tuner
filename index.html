@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>节拍器 + 调音器</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>节拍器 + 调音器</h1>
+
+    <div class="tabs">
+      <button id="tabMetronome" class="tab active">节拍器</button>
+      <button id="tabTuner" class="tab">调音器</button>
+    </div>
+
+    <section id="metronomePanel" class="panel">
+      <div class="row">
+        <label for="bpmRange">BPM</label>
+        <input id="bpmRange" type="range" min="40" max="240" value="100" />
+        <input id="bpmNumber" type="number" min="40" max="240" value="100" />
+      </div>
+
+      <div class="row">
+        <label for="beatsPerBar">拍号</label>
+        <select id="beatsPerBar">
+          <option value="2">2/4</option>
+          <option value="3">3/4</option>
+          <option value="4" selected>4/4</option>
+          <option value="6">6/8(按6拍)</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="volume">音量</label>
+        <input id="volume" type="range" min="0" max="1" step="0.01" value="0.7" />
+      </div>
+
+      <div class="row">
+        <button id="toggleMetronome" class="primary">开始</button>
+      </div>
+
+      <div class="beatWrap">
+        <div id="beatDots" class="dots"></div>
+      </div>
+      <p class="hint">提示：手机上第一次点击“开始”后才会发声。</p>
+    </section>
+
+    <section id="tunerPanel" class="panel hidden">
+      <div class="row">
+        <button id="toggleTuner" class="primary">启动调音</button>
+      </div>
+
+      <div class="tunerReadout">
+        <div id="note" class="note">--</div>
+        <div id="freq" class="freq">0.0 Hz</div>
+        <div id="cents" class="cents">0 cents</div>
+      </div>
+
+      <div class="needleBox">
+        <div class="needleScale">
+          <span>-50</span><span>0</span><span>+50</span>
+        </div>
+        <div class="needleTrack">
+          <div id="needle" class="needle"></div>
+        </div>
+      </div>
+
+      <p id="tunerStatus" class="hint">点击“启动调音”并允许麦克风权限。</p>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
